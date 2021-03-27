@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+query="$(xrandr -q)"
+screens="$(echo "$query" | grep "connected" | awk '{print $1}')"
+screen_choice="$(echo "$screens" | dmenu)"
+
+if ! echo "$screens" | grep -q "$screen_choice"; then
+	return 1
+fi
+
+
+echo $screen_choice

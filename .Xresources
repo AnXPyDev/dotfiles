@@ -1,0 +1,12 @@
+st.borderpx: 12
+st.opacity: 0.8
+st.background: #0e0e0e
+st.foreground: #ffffff
+
+wm.borderWidth: 6
+wm.windowGap: 12
+wm.windowGaps: 0 8 16 32 64
+wm.splitRatio: 0.6
+wm.borderColorActive: #aaaaaa
+wm.borderColorFocused: #FFFFFF
+wm.borderColorNormal: #2e2e2e

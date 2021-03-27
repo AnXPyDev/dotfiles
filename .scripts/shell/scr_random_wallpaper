@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ls -1A $HOME/.wallpapers | shuf -n 1 | xargs -I {} feh --bg-fill $HOME/.wallpapers/{}
