@@ -1,1 +1,1 @@
-bspwm
+bspwm 2&> bspwmlog

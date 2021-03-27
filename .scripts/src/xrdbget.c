@@ -6,7 +6,7 @@
 // Prints value of Xresource
 
 void print_usage() {
-	fputs("usage:\n  xrdbget [resource name]\n  xrdbget [display name] [resource name]", stderr);
+	fprintf(stderr, "usage:\n  xrdbget [resource name]\n  xrdbget [display name] [resource name]");
 
 }
 
@@ -25,14 +25,10 @@ int main(int argc, char **argv) {
 	char *display_name = NULL;
 	char *resource_name = argv[1];
 
-	printf("display_name %s\n", display_name);
-
 	if (argc > 2) {
 		display_name = argv[1];
 		resource_name = argv[2];
 	}
-
-	printf("resource_name %s\n", resource_name);
 
 	Display *display = XOpenDisplay(display_name);
 	if (display == NULL) {
@@ -40,14 +36,32 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 	
-	XrmInitialize();
-	XrmDatabase db = XrmGetDatabase(display);
+	XGetDefault(display, "", "");
+	char *manager_string = XResourceManagerString(display);
 
-
-	if (db == NULL) {
-		fprintf(stderr, "Could not get database from X display %s\n", XDisplayName(display_name));
+	if (manager_string == NULL) {
+		fprintf(stderr, "Manager string is NULL\n");
 		return 1;
 	}
+
+	XrmDatabase db = XrmGetStringDatabase(manager_string);
+
+	if (db == NULL) {
+		fprintf(stderr, "Could not get database");
+		return 1;
+	}
+
+	XrmValue val;
+	
+	char *value_type;
+	XrmGetResource(db, resource_name, "", &value_type, &val);
+	
+	if (value_type == NULL) {
+		fprintf(stderr, "No value for resource %s found.\n", resource_name);
+		return 1;
+	}
+		
+	printf("%s\n", val.addr);
 
 	return 0;
 }
