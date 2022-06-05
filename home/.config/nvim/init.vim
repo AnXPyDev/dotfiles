@@ -1,1 +1,0 @@
-/home/tennant/dotfiles/source/nvim/init.vim
