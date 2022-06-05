@@ -1,0 +1,5 @@
+#!/bin/sh
+
+pkill sxhkd -USR1
+pkill picom -USR1
+herbstclient reload

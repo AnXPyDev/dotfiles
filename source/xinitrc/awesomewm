@@ -1,0 +1,3 @@
+pipewire & pipewire-pulse & wireplumber &
+picom &
+awesome 2>&1 | tee $HOME/.log/awesome.log
