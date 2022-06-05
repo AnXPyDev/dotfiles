@@ -1,5 +1,7 @@
 main: compile
 
+fast: build compile deploy
+
 env: FRC
 	util/mkenv.sh $(TARGET) $(ENVDIR)
 
@@ -13,6 +15,9 @@ compile: FRC
 	make -f compile.make compile
 
 clean: FRC
-	rm -r build env compile.make
+	rm -rf build compile.make
+
+cleanenv: FRC
+	rm -rf env
 
 FRC:

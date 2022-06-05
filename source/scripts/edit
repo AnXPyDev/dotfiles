@@ -1,0 +1,5 @@
+#!/bin/sh
+
+FILE=$(selectfile "$1")
+
+[ "$FILE" ] && exec $EDITOR "$FILE"

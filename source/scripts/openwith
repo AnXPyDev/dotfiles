@@ -1,0 +1,5 @@
+#!/bin/sh
+
+FILE="$(selectfile "$2")"
+
+[ "$FILE" ] && exec $1 "$FILE"

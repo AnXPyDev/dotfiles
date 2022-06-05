@@ -17,7 +17,7 @@ find source -type f | while read -r file; do
 done
 
 printf 'compile: ' >> $HEADER
-find source -type f | sed 's|^source|build|' | sed -z 's|\n|, |g;s|, $||' >> $HEADER
+find source -type f | sed 's|^source|build|' | sed -z 's|\n| |g' >> $HEADER
 printf '\n\n' >> $HEADER
 
 

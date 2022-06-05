@@ -1,11 +1,12 @@
 fish_add_path $HOME/.scripts/
 
-alias hc herbstclient
+set -x DOTFILES "$HOME/dotfiles"
+set -x EDITOR "nvim"
+set -x TTYMENU "fuzz -x"
 
-alias dots 'git --git-dir=$HOME/.dots --work-tree=$HOME'
-alias dotsup 'dots update-index --again'
+alias ~edit 'edit $DOTFILES/source'
+alias ~fast 'make -C $DOTFILES fast'
 
 if status is-interactive
 	fish_vi_key_bindings
-    # Commands to run in interactive sessions can go here
 end

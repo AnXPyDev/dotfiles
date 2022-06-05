@@ -1,0 +1,10 @@
+#!/bin/sh
+
+DIR="$1"; [ -z "$DIR" ] && DIR="."
+[ "$DIR" = "/" ] || DIR="$(echo "$DIR" | sed 's|/$||')"
+
+PATH="$DIR/$(find $DIR | sed "s|^$DIR||;s|^/||" | $TTYMENU)"
+
+[ $? = 0 ] || exit $?
+
+echo "$PATH"
